@@ -17,11 +17,52 @@
         </div>
     </header>
 
-    <main id="contentArea">
-        <!-- Konten akan diisi oleh script.js -->
+    <main>
+        <!-- Bagian Trailer / Rekomendasi -->
+        <div class="trailer-section">
+            <div class="section-title">🔥 Trailer Terbaru</div>
+            <div class="video-container">
+                <iframe src="https://archive.org/embed/trailer-ninjago-dragon-rising-s-4" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div class="grid-container" id="filmList">
+            <!-- Film akan dimuat di sini via JS -->
+        </div>
     </main>
 
-    <script src="script.js"></script>
+    <script>
+        let allFilms = [];
+
+        // Fetch Data dari JSON
+        fetch('films.json')
+            .then(response => response.json())
+            .then(films => {
+                allFilms = films;
+                renderFilms(films);
+            })
+            .catch(err => console.error("Gagal memuat films.json", err));
+
+        function renderFilms(films) {
+            const container = document.getElementById('filmList');
+            container.innerHTML = films.map(film => `
+                <div class="card" onclick="location.href='play.html?id=${film.id}'">
+                    <div class="card-content">
+                        <div class="card-title">${film.title}</div>
+                        <div class="card-type">${film.episodes.length} Episode</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Search Logic
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase();
+            const filtered = allFilms.filter(f => f.title.toLowerCase().includes(term));
+            renderFilms(filtered);
+        });
+    </script>
+    
     <script>
         // Register Service Worker untuk PWA
         if ('serviceWorker' in navigator) {
