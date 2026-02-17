@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nonton - Ninjagoku</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+    <style>
+        .player-container {
+            background: #000;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            aspect-ratio: 16/9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #333;
+        }
+        .telegram-msg {
+            text-align: center;
+            padding: 20px;
+        }
+        .btn-telegram {
+            background: #0088cc;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        .episode-btn {
+            display: block;
+            background: #252525;
+            padding: 10px;
+            margin-bottom: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            color: white;
+            text-decoration: none;
+        }
+        .episode-btn:hover { background: #333; }
+        .episode-btn.active { background: #e50914; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo" onclick="location.href='index.html'">🥷 Ninjagoku</div>
+    </header>
+
+    <main>
+        <a href="index.html" class="back-btn">← Kembali</a>
+        <h2 id="filmTitle" style="margin-bottom: 10px;">Memuat...</h2>
+
+        <!-- Area Player -->
+        <div id="playerArea" class="player-container">
+            <div class="telegram-msg">
+                <h3>Pilih Episode di bawah untuk menonton</h3>
+            </div>
+        </div>
+
+        <!-- Daftar Episode -->
+        <div id="episodeList" style="margin-top: 20px;"></div>
+    </main>
+
+    <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const filmId = urlParams.get('id');
+        const playerArea = document.getElementById('playerArea');
+
+        fetch('films.json')
+            .then(res => res.json())
+            .then(films => {
+                const film = films.find(f => f.id === filmId);
+                if (!film) {
+                    document.getElementById('filmTitle').innerText = "Film tidak ditemukan";
+                    return;
+                }
+
+                document.getElementById('filmTitle').innerText = film.title;
+                renderEpisodes(film.episodes);
+            });
+
+        function renderEpisodes(episodes) {
+            const container = document.getElementById('episodeList');
+            container.innerHTML = episodes.map((ep, index) => `
+                <div class="episode-btn" onclick="playEpisode('${ep.url}', '${ep.title}', this)">
+                    ${ep.title}
+                </div>
+            `).join('');
+        }
+
+        function playEpisode(url, title, btnElement) {
+            // Highlight tombol aktif
+            document.querySelectorAll('.episode-btn').forEach(b => b.classList.remove('active'));
+            btnElement.classList.add('active');
+
+            if (url.includes('youtube.com') || url.includes('youtu.be')) {
+                // Embed YouTube
+                playerArea.innerHTML = `<div class="plyr__video-embed" id="player"><iframe src="${url}" allowfullscreen allowtransparency allow="autoplay"></iframe></div>`;
+                new Plyr('#player');
+            } else if (url.includes('t.me')) {
+                // Link Telegram
+                playerArea.innerHTML = `
+                    <div class="telegram-msg">
+                        <h3>${title} tersedia di Telegram</h3>
+                        <a href="${url}" target="_blank" class="btn-telegram">▶ Buka di Telegram</a>
+                    </div>`;
+            } else {
+                // Direct Video (MP4/HLS)
+                playerArea.innerHTML = `<video id="player" playsinline controls><source src="${url}" type="video/mp4" /></video>`;
+                new Plyr('#player');
+            }
+        }
+    </script>
+</body>
+</html>

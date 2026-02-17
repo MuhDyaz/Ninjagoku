@@ -1,0 +1,141 @@
+[
+  {
+    "id": "pilot",
+    "title": "Ninjago Pilot: Way of The Ninja",
+    "thumbnail": "https://image.tmdb.org/t/p/w500/1D2WdK8M5SjX5J5W5Q5W5Q5W5Q5.jpg",
+    "description": "Awal mula petualangan para Ninja.",
+    "episodes": [
+      {"title": "Episode 1", "url": "https://t.me/ninjagosubtitleindo/83"},
+      {"title": "Episode 2", "url": "https://t.me/ninjagosubtitleindo/84"},
+      {"title": "Episode 3", "url": "https://t.me/ninjagosubtitleindo/85"},
+      {"title": "Episode 4", "url": "https://t.me/ninjagosubtitleindo/86"}
+    ]
+  },
+  {
+    "id": "s1",
+    "title": "Season 1: Rise of the Snakes",
+    "thumbnail": "https://image.tmdb.org/t/p/w500/qJ3X5J5W5Q5W5Q5W5Q5W5Q5.jpg",
+    "description": "Para Ninja melawan ancaman suku Ular.",
+    "episodes": [
+      {"title": "Episode 1", "url": "https://t.me/ninjagosubtitleindo/93"},
+      {"title": "Episode 2", "url": "https://t.me/ninjagosubtitleindo/94"},
+      {"title": "Episode 3", "url": "https://t.me/ninjagosubtitleindo/95"},
+      {"title": "Episode 4", "url": "https://t.me/ninjagosubtitleindo/96"},
+      {"title": "Episode 5", "url": "https://t.me/ninjagosubtitleindo/97"},
+      {"title": "Episode 6", "url": "https://t.me/ninjagosubtitleindo/99"},
+      {"title": "Episode 7", "url": "https://t.me/ninjagosubtitleindo/100"},
+      {"title": "Episode 8", "url": "https://t.me/ninjagosubtitleindo/101"},
+      {"title": "Episode 9", "url": "https://t.me/ninjagosubtitleindo/102"},
+      {"title": "Episode 10", "url": "https://t.me/ninjagosubtitleindo/103"},
+      {"title": "Episode 11", "url": "https://t.me/ninjagosubtitleindo/104"},
+      {"title": "Episode 12", "url": "https://t.me/ninjagosubtitleindo/105"},
+      {"title": "Episode 13", "url": "https://t.me/ninjagosubtitleindo/106"}
+    ]
+  },
+  {
+    "id": "s2",
+    "title": "Season 2: Legacy of the Green Ninja",
+    "thumbnail": "https://image.tmdb.org/t/p/w500/s2_poster.jpg",
+    "episodes": [
+      {"title": "Episode 1", "url": "https://t.me/ninjagosubtitleindo/110"},
+      {"title": "Episode 2", "url": "https://t.me/ninjagosubtitleindo/111"},
+      {"title": "Episode 3", "url": "https://t.me/ninjagosubtitleindo/112"},
+      {"title": "Episode 4", "url": "https://t.me/ninjagosubtitleindo/113"},
+      {"title": "Episode 5", "url": "https://t.me/ninjagosubtitleindo/115"},
+      {"title": "Episode 6", "url": "https://t.me/ninjagosubtitleindo/116"},
+      {"title": "Episode 7", "url": "https://t.me/ninjagosubtitleindo/117"},
+      {"title": "Episode 8", "url": "https://t.me/ninjagosubtitleindo/118"},
+      {"title": "Episode 9", "url": "https://t.me/ninjagosubtitleindo/119"},
+      {"title": "Episode 10", "url": "https://t.me/ninjagosubtitleindo/120"},
+      {"title": "Episode 11", "url": "https://t.me/ninjagosubtitleindo/121"},
+      {"title": "Episode 12", "url": "https://t.me/ninjagosubtitleindo/122"},
+      {"title": "Episode 13", "url": "https://t.me/ninjagosubtitleindo/123"}
+    ]
+  },
+  {
+    "id": "s3",
+    "title": "Season 3: Rebooted",
+    "thumbnail": "https://image.tmdb.org/t/p/w500/s3_poster.jpg",
+    "episodes": [
+      {"title": "Episode 1", "url": "https://t.me/ninjagosubtitleindo/130"},
+      {"title": "Episode 2", "url": "https://t.me/ninjagosubtitleindo/131"},
+      {"title": "Episode 3", "url": "https://t.me/ninjagosubtitleindo/132"},
+      {"title": "Episode 4", "url": "https://t.me/ninjagosubtitleindo/133"},
+      {"title": "Episode 5", "url": "https://t.me/ninjagosubtitleindo/134"},
+      {"title": "Episode 6", "url": "https://t.me/ninjagosubtitleindo/135"},
+      {"title": "Episode 7", "url": "https://t.me/ninjagosubtitleindo/136"},
+      {"title": "Episode 8", "url": "https://t.me/ninjagosubtitleindo/137"}
+    ]
+  },
+  {
+    "id": "s4",
+    "title": "Season 4: Tournament of Elements",
+    "thumbnail": "https://image.tmdb.org/t/p/w500/s4_poster.jpg",
+    "episodes": [
+      {"title": "Episode 1", "url": "https://t.me/ninjagosubtitleindo/141"},
+      {"title": "Episode 2", "url": "https://t.me/ninjagosubtitleindo/143"},
+      {"title": "Episode 3", "url": "https://t.me/ninjagosubtitleindo/144"},
+      {"title": "Episode 4", "url": "https://t.me/ninjagosubtitleindo/145"},
+      {"title": "Episode 5", "url": "https://t.me/ninjagosubtitleindo/146"},
+      {"title": "Episode 6", "url": "https://t.me/ninjagosubtitleindo/147"},
+      {"title": "Episode 7", "url": "https://t.me/ninjagosubtitleindo/148"},
+      {"title": "Episode 8", "url": "https://t.me/ninjagosubtitleindo/149"},
+      {"title": "Episode 9", "url": "https://t.me/ninjagosubtitleindo/150"},
+      {"title": "Episode 10", "url": "https://t.me/ninjagosubtitleindo/151"}
+    ]
+  },
+  {
+    "id": "s5",
+    "title": "Season 5: Possession",
+    "thumbnail": "https://image.tmdb.org/t/p/w500/s5_poster.jpg",
+    "episodes": [
+      {"title": "Episode 1", "url": "https://t.me/ninjagosubtitleindo/165"},
+      {"title": "Episode 2", "url": "https://t.me/ninjagosubtitleindo/167"},
+      {"title": "Episode 3", "url": "https://t.me/ninjagosubtitleindo/189"},
+      {"title": "Episode 4", "url": "https://t.me/ninjagosubtitleindo/190"},
+      {"title": "Episode 5", "url": "https://t.me/ninjagosubtitleindo/191"},
+      {"title": "Episode 6", "url": "https://t.me/ninjagosubtitleindo/192"},
+      {"title": "Episode 7", "url": "https://t.me/ninjagosubtitleindo/193"},
+      {"title": "Episode 8", "url": "https://t.me/ninjagosubtitleindo/194"},
+      {"title": "Episode 9", "url": "https://t.me/ninjagosubtitleindo/195"},
+      {"title": "Episode 10", "url": "https://t.me/ninjagosubtitleindo/196"}
+    ]
+  },
+  {
+    "id": "s11",
+    "title": "Season 11: Secrets of the Forbidden Spinjitzu",
+    "thumbnail": "https://image.tmdb.org/t/p/w500/s11_poster.jpg",
+    "episodes": [
+      {"title": "🔥 Fire Chapter (Playlist)", "url": "https://www.youtube.com/embed/videoseries?list=PL-5C6K7ocUWHYXacyA7oDNQiJIZv2jtCh"},
+      {"title": "❄️ Ice Chapter (Playlist)", "url": "https://www.youtube.com/embed/videoseries?list=PLrML7d4aiT-zWBb73Nzlwxs88mE2Y6u19"}
+    ]
+  },
+  {
+    "id": "s12",
+    "title": "Season 12: Prime Empire",
+    "thumbnail": "https://image.tmdb.org/t/p/w500/s12_poster.jpg",
+    "episodes": [
+      {"title": "Full Season Playlist", "url": "https://www.youtube.com/embed/videoseries?list=PL-5C6K7ocUWFsYFeCSkGW5RpQ1YQHi9IR"}
+    ]
+  },
+  {
+    "id": "s13",
+    "title": "Season 13: Master of the Mountain",
+    "thumbnail": "https://image.tmdb.org/t/p/w500/s13_poster.jpg",
+    "episodes": [
+      {"title": "Full Season Playlist", "url": "https://www.youtube.com/embed/videoseries?list=PL-5C6K7ocUWE9euVJpfFIvUXfkX-MgQ_m"}
+    ]
+  },
+  {
+    "id": "dr1",
+    "title": "Season 17: Dragon Rising Part 1",
+    "thumbnail": "https://image.tmdb.org/t/p/w500/dr1_poster.jpg",
+    "episodes": [
+      {"title": "Episode 1", "url": "https://t.me/dragonrisingsubindo/6"},
+      {"title": "Episode 2", "url": "https://t.me/dragonrisingsubindo/7"},
+      {"title": "Episode 3", "url": "https://t.me/dragonrisingsubindo/8"},
+      {"title": "Episode 4", "url": "https://t.me/dragonrisingsubindo/9"},
+      {"title": "Episode 5", "url": "https://t.me/dragonrisingsubindo/10"}
+    ]
+  }
+]
