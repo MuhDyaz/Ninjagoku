@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ninjagoku</title>
+    <title>NINJAGOKU · Streaming</title>
     <style>
         * {
             margin: 0;
@@ -22,6 +22,7 @@
             overflow-x: hidden;
         }
 
+        /* Latar gradien dinamis + partikel */
         body::before {
             content: '';
             position: fixed;
@@ -50,49 +51,23 @@
         }
 
         @keyframes gradientShift {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
-        /* Particle animations */
+        /* Partikel */
         @keyframes float1 {
-            0%, 100% {
-                transform: translate(0, 0) scale(1);
-                opacity: 0.3;
-            }
-            50% {
-                transform: translate(100px, -100px) scale(1.5);
-                opacity: 0.6;
-            }
+            0%, 100% { transform: translate(0,0) scale(1); opacity:0.3; }
+            50% { transform: translate(100px, -100px) scale(1.5); opacity:0.6; }
         }
-
         @keyframes float2 {
-            0%, 100% {
-                transform: translate(0, 0) scale(1);
-                opacity: 0.2;
-            }
-            50% {
-                transform: translate(-150px, 150px) scale(0.8);
-                opacity: 0.5;
-            }
+            0%, 100% { transform: translate(0,0) scale(1); opacity:0.2; }
+            50% { transform: translate(-150px, 150px) scale(0.8); opacity:0.5; }
         }
-
         @keyframes float3 {
-            0%, 100% {
-                transform: translate(0, 0) scale(1);
-                opacity: 0.25;
-            }
-            50% {
-                transform: translate(80px, 120px) scale(1.3);
-                opacity: 0.55;
-            }
+            0%, 100% { transform: translate(0,0) scale(1); opacity:0.25; }
+            50% { transform: translate(80px, 120px) scale(1.3); opacity:0.55; }
         }
 
         .particle {
@@ -101,42 +76,210 @@
             pointer-events: none;
             z-index: -1;
         }
-
         .particle-1 {
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(250, 204, 21, 0.15) 0%, transparent 70%);
-            top: -100px;
-            left: 10%;
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(250,204,21,0.15) 0%, transparent 70%);
+            top: -100px; left: 10%;
             animation: float1 20s ease-in-out infinite;
         }
-
         .particle-2 {
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(239, 68, 68, 0.12) 0%, transparent 70%);
-            bottom: -50px;
-            right: 15%;
+            width: 300px; height: 300px;
+            background: radial-gradient(circle, rgba(239,68,68,0.12) 0%, transparent 70%);
+            bottom: -50px; right: 15%;
             animation: float2 25s ease-in-out infinite;
         }
-
         .particle-3 {
-            width: 350px;
-            height: 350px;
-            background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
-            top: 50%;
-            left: -100px;
+            width: 350px; height: 350px;
+            background: radial-gradient(circle, rgba(59,130,246,0.1) 0%, transparent 70%);
+            top: 50%; left: -100px;
             animation: float3 22s ease-in-out infinite;
         }
 
+        /* Navbar */
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 2rem;
+            background: linear-gradient(180deg, #0b1a2a 0%, rgba(11,26,42,0.9) 90%);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid #2d4b65;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #e0e7ff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #facc15;
+        }
+
+        .nav-premium {
+            background: #facc15;
+            color: #0b1a2a !important;
+            padding: 0.5rem 1.2rem;
+            border-radius: 30px;
+            font-weight: 700;
+        }
+
+        .nav-premium:hover {
+            background: #eab308;
+            color: #0b1a2a;
+        }
+
+        /* Hero section */
+        .hero {
+            position: relative;
+            height: 70vh;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            padding: 0 4rem;
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://ovp.itv.com/v2/images/programme/m8kh7v6/itv_hub/01_Hero_DesktopCTV/16x9?distributionPartner=itv_hub&fallback=standard&w=1597&q=80&blur=0&bg=false');
+            background-size: cover;
+            background-position: center 30%;
+            z-index: -2;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, #0b1a2a 15%, rgba(11,26,42,0.3) 70%);
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 650px;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 900;
+            line-height: 1.1;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        .hero-title span {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: 400;
+            color: #facc15;
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+        }
+
+        .hero-tags {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 1.5rem 0 1rem;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #b0c4de;
+        }
+
+        .hero-tags .badge {
+            background: #2d4b65;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            color: white;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            color: #e2e8f0;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            max-width: 550px;
+        }
+
+        .hero-description .more-info {
+            color: #facc15;
+            text-decoration: none;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 0.9rem 2.2rem;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-play {
+            background: #facc15;
+            color: #0b1a2a;
+        }
+
+        .btn-play:hover {
+            background: #eab308;
+            transform: scale(1.05);
+        }
+
+        .btn-list {
+            background: rgba(45, 75, 101, 0.7);
+            backdrop-filter: blur(4px);
+            color: white;
+            border: 1px solid #64748b;
+        }
+
+        .btn-list:hover {
+            background: #2d4b65;
+            transform: scale(1.05);
+        }
+
+        /* Container utama */
         .container {
             max-width: 1400px;
             margin: 0 auto;
             padding: 1.5rem;
             flex: 1;
+            width: 100%;
         }
 
-        /* header */
+        /* Header personal */
         .header {
             display: flex;
             align-items: center;
@@ -161,14 +304,37 @@
             margin-left: auto;
         }
 
-        /* main layout */
+        /* Tabs */
+        .tabs {
+            display: flex;
+            gap: 2rem;
+            border-bottom: 2px solid #2d4b65;
+            margin-bottom: 1.5rem;
+        }
+
+        .tab {
+            font-size: 1.3rem;
+            font-weight: 700;
+            padding: 0.5rem 0;
+            cursor: pointer;
+            color: #94a3b8;
+            border-bottom: 4px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .tab.active {
+            color: #facc15;
+            border-bottom-color: #facc15;
+        }
+
+        /* Layout utama */
         .content-wrapper {
             display: flex;
             gap: 2rem;
             flex-wrap: wrap;
         }
 
-        /* season sidebar */
+        /* Season sidebar */
         .season-sidebar {
             flex: 0 0 240px;
             background: #1e293b;
@@ -235,13 +401,13 @@
             color: #facc15;
         }
 
-        /* main content */
+        /* Main content */
         .main-content {
             flex: 1;
             min-width: 300px;
         }
 
-        /* video player */
+        /* Video player */
         .player-section {
             background: #000;
             border-radius: 1.5rem;
@@ -257,6 +423,7 @@
             border: none;
         }
 
+        /* Episode header */
         .episode-header {
             display: flex;
             align-items: center;
@@ -276,7 +443,7 @@
             font-size: 0.9rem;
         }
 
-        /* episode grid */
+        /* Episode grid */
         .episode-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -299,13 +466,10 @@
         }
 
         .episode-thumb {
-            background: #0f172a;
             aspect-ratio: 16/9;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #475569;
-            font-size: 2rem;
+            background-size: cover;
+            background-position: center;
+            background-color: #0f172a; /* fallback */
         }
 
         .episode-info {
@@ -339,7 +503,7 @@
             color: #94a3b8;
         }
 
-        /* footer */
+        /* Footer */
         .footer {
             margin-top: 3rem;
             text-align: center;
@@ -348,50 +512,73 @@
             padding-top: 1.5rem;
         }
 
-        /* Mobile Optimization */
+        /* Responsive */
         @media (max-width: 768px) {
+            .navbar {
+                padding: 0.8rem 1rem;
+                flex-wrap: wrap;
+            }
+            .nav-links {
+                gap: 1rem;
+                flex-wrap: wrap;
+            }
+            .hero {
+                padding: 0 1.5rem;
+                min-height: 500px;
+            }
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            .hero-title span {
+                font-size: 1.8rem;
+            }
+            .hero-description {
+                font-size: 1rem;
+            }
+            .btn {
+                padding: 0.7rem 1.5rem;
+                font-size: 1rem;
+            }
             .container {
                 padding: 1rem;
             }
-
             .header {
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 0.5rem;
                 margin-bottom: 1.5rem;
             }
-
             .header h1 {
                 font-size: 1.8rem;
             }
-
             .header span {
                 font-size: 1rem;
                 margin-left: 0;
             }
-
+            .tabs {
+                gap: 1rem;
+            }
+            .tab {
+                font-size: 1.1rem;
+            }
             .content-wrapper {
                 flex-direction: column;
                 gap: 1rem;
             }
-
             .season-sidebar {
                 flex: auto;
                 width: 100%;
                 padding: 1rem;
             }
-
             .season-sidebar h2 {
                 font-size: 1.2rem;
                 margin-bottom: 1rem;
             }
-
             .season-list {
                 flex-direction: row;
                 flex-wrap: wrap;
                 gap: 0.4rem;
             }
-
             .season-btn {
                 flex: 1 0 auto;
                 min-width: calc(50% - 0.2rem);
@@ -399,74 +586,55 @@
                 padding: 0.7rem 0.8rem;
                 font-size: 0.9rem;
             }
-
             .season-badge {
                 font-size: 0.75rem;
                 padding: 0.15rem 0.5rem;
             }
-
             .player-section {
                 margin-bottom: 1.5rem;
             }
-
             .episode-header {
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 0.5rem;
                 margin-bottom: 1rem;
             }
-
             .episode-header h3 {
                 font-size: 1.3rem;
             }
-
             .episode-count {
                 padding: 0.25rem 0.8rem;
                 font-size: 0.8rem;
             }
-
             .episode-grid {
                 grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
                 gap: 0.8rem;
             }
-
             .episode-card {
                 border-radius: 0.8rem;
             }
-
-            .episode-thumb {
-                font-size: 1.5rem;
-            }
-
             .episode-info {
                 padding: 0.8rem;
             }
-
             .episode-title {
                 font-size: 0.9rem;
             }
-
             .episode-duration {
                 font-size: 0.75rem;
             }
-
             .footer {
                 margin-top: 2rem;
                 font-size: 0.85rem;
                 padding-top: 1rem;
             }
-
-            /* Particle size optimization for mobile */
             .particle-1 {
                 width: 250px;
                 height: 250px;
             }
-
             .particle-2 {
                 width: 200px;
                 height: 200px;
             }
-
             .particle-3 {
                 width: 220px;
                 height: 220px;
@@ -474,36 +642,38 @@
         }
 
         @media (max-width: 480px) {
+            .hero {
+                padding: 0 1rem;
+            }
+            .hero-title {
+                font-size: 2rem;
+            }
+            .hero-title span {
+                font-size: 1.5rem;
+            }
             .container {
                 padding: 0.8rem;
             }
-
             .header h1 {
                 font-size: 1.5rem;
             }
-
             .header span {
                 font-size: 0.9rem;
             }
-
             .season-sidebar {
                 padding: 0.8rem;
             }
-
             .season-btn {
                 padding: 0.6rem 0.7rem;
                 font-size: 0.85rem;
             }
-
             .episode-header h3 {
                 font-size: 1.1rem;
             }
-
             .episode-grid {
                 grid-template-columns: 1fr;
                 gap: 0.7rem;
             }
-
             .episode-card:hover {
                 transform: scale(1.01);
             }
@@ -511,15 +681,63 @@
     </style>
 </head>
 <body>
+    <!-- Partikel latar -->
     <div class="particle particle-1"></div>
     <div class="particle particle-2"></div>
     <div class="particle particle-3"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-links">
+            <a href="#">LIVE</a>
+            <a href="#">FILM</a>
+            <a href="#">CATEGORIES</a>
+            <a href="#">NEWS</a>
+            <a href="#">MY LIST</a>
+        </div>
+        <a href="#" class="nav-premium">STREAM AD-FREE</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-background"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-title">
+                <span>LEGO</span>
+                NINJAGO
+                <small style="display: block; font-size: 1.8rem; color: #fff;">Masters of Spinjitzu</small>
+            </div>
+            <div class="hero-tags">
+                <span class="badge">📘 KIDS</span>
+                <span>· 11M</span>
+            </div>
+            <p class="hero-description">
+                Six ninja, Kai, Jay, Cole, Zane, Lloyd and Nya are fighting against the forces of evil. Now they face even greater threats that risk disturbing the peace in the land of Ninjago.
+                <a href="#" class="more-info">More info</a>
+            </p>
+            <div class="hero-buttons">
+                <button class="btn btn-play" id="playFirstEpisode">▶ PLAY</button>
+                <button class="btn btn-list">+ ADD TO LIST</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Container utama -->
     <div class="container">
+        <!-- Header personal -->
         <div class="header">
             <h1>NINJAGOKU</h1>
             <span>⛩️Made by Fled⛩️</span>
         </div>
 
+        <!-- Tabs -->
+        <div class="tabs">
+            <div class="tab active" id="seriesTab">SERIES 1</div>
+            <div class="tab" id="relatedTab">RELATED</div>
+        </div>
+
+        <!-- Konten utama: season + episode -->
         <div class="content-wrapper">
             <!-- SEASON SIDEBAR -->
             <aside class="season-sidebar">
@@ -536,8 +754,8 @@
 
                 <!-- EPISODE HEADER -->
                 <div class="episode-header">
-                    <h3 id="selectedSeasonTitle">Season 1 · Rise of the Snakes</h3>
-                    <span class="episode-count" id="episodeCount">13 episodes</span>
+                    <h3 id="selectedSeasonTitle">Pilot · Way of the Ninja</h3>
+                    <span class="episode-count" id="episodeCount">2 episodes</span>
                 </div>
 
                 <!-- EPISODE GRID -->
@@ -545,6 +763,7 @@
             </main>
         </div>
 
+        <!-- Footer -->
         <div class="footer">
             MADE BY FLED - NINJAGOKU
         </div>
@@ -553,196 +772,100 @@
     <script>
         (function() {
             // ==================== DATA NINJAGO ====================
-            // Data season dan episode (hingga season 16, beberapa season memiliki jumlah episode bervariasi)
             const seasons = [
                 {
                     id: 0,
                     title: "Pilot",
                     episodes: [
-                        { num: 1, title: "Way of the Ninja", duration: "22.58m", videoId: "9P9E_GB6EIU" },
-                        { num: 2, title: "King of Shadows", duration: "21.55m", videoId: "dQw4w9WgXcQ" }
+                        { num: 1, title: "Way of the Ninja and The Golden Weapon", duration: "22.58m", videoId: "64vovv6HlM" },
+                        { num: 2, title: "King of Shadows and Weapons of Destiny", duration: "21.55m", videoId: "XFRepuGHil" }
                     ]
                 },
                 {
                     id: 1,
                     title: "Rise of the Snakes",
                     episodes: [
-                        { num: 1, title: "Rise of the Snakes", duration: "23m", videoId: "9P9E_GB6EIU" },
-                        { num: 2, title: "Home", duration: "23m", videoId: "dQw4w9WgXcQ" },
-                        { num: 3, title: "Snakebit", duration: "23m", videoId: "dQw4w9WgXcQ" },
-                        { num: 4, title: "Never Trust a Snake", duration: "23m", videoId: "dQw4w9WgXcQ" },
-                        { num: 5, title: "Can of Worms", duration: "23m", videoId: "dQw4w9WgXcQ" },
-                        { num: 6, title: "The Snake King", duration: "23m", videoId: "dQw4w9WgXcQ" },
-                        { num: 7, title: "Tick Tock", duration: "23m", videoId: "dQw4w9WgXcQ" },
-                        { num: 8, title: "Once Bitten, Twice Shy", duration: "23m", videoId: "dQw4w9WgXcQ" },
-                        { num: 9, title: "The Royal Blacksmiths", duration: "23m", videoId: "dQw4w9WgXcQ" },
-                        { num: 10, title: "The Green Ninja", duration: "23m", videoId: "dQw4w9WgXcQ" },
-                        { num: 11, title: "All of Nothing", duration: "23m", videoId: "dQw4w9WgXcQ" },
-                        { num: 12, title: "The Rise of the Great Devourer", duration: "23m", videoId: "dQw4w9WgXcQ" },
-                        { num: 13, title: "Day of the Great Devourer", duration: "23m", videoId: "dQw4w9WgXcQ" }
+                        { num: 1, title: "Rise of the Snakes", duration: "23m", videoId: "LX2QtfuaFs" },
+                        { num: 2, title: "Home", duration: "23m", videoId: "EJvX6cF0dW" },
+                        { num: 3, title: "Snakebit", duration: "23m", videoId: "K4FKssEy7R" },
+                        { num: 4, title: "Never Trust a Snake", duration: "23m", videoId: "9oDPx4uUFX" },
+                        { num: 5, title: "Can of Worms", duration: "23m", videoId: "lXcB5dLAkO" },
+                        { num: 6, title: "The Snake King", duration: "23m", videoId: "Ej1K4tJB7D" },
+                        { num: 7, title: "Tick Tock", duration: "23m", videoId: "R8KtFVclZu" },
+                        { num: 8, title: "Once Bitten, Twice Shy", duration: "23m", videoId: "F65JORm1rF" },
+                        { num: 9, title: "The Royal Blacksmiths", duration: "23m", videoId: "ArvQ61MKqz" },
+                        { num: 10, title: "The Green Ninja", duration: "23m", videoId: "iigedPWZDI" },
+                        { num: 11, title: "All of Nothing", duration: "23m", videoId: "6VXYCQGMU9" },
+                        { num: 12, title: "The Rise of the Great Devourer", duration: "23m", videoId: "w4WVbuWNKO" },
+                        { num: 13, title: "Day of the Great Devourer", duration: "23m", videoId: "m3ajeQKVdF" }
                     ]
                 },
-                {
-                    id: 2,
-                    title: "Legacy of the Green Ninja",
-                    episodes: Array.from({ length: 13 }, (_, i) => ({
-                        num: i + 1,
-                        title: `Episode ${i + 1}`,
-                        duration: "23m",
-                        videoId: "dQw4w9WgXcQ"
-                    }))
-                },
-                {
-                    id: 3,
-                    title: "Rebooted",
-                    episodes: Array.from({ length: 8 }, (_, i) => ({
-                        num: i + 1,
-                        title: `Episode ${i + 1}`,
-                        duration: "23m",
-                        videoId: "dQw4w9WgXcQ"
-                    }))
-                },
-                {
-                    id: 4,
-                    title: "Tournament of Elements",
-                    episodes: Array.from({ length: 10 }, (_, i) => ({
-                        num: i + 1,
-                        title: `Episode ${i + 1}`,
-                        duration: "23m",
-                        videoId: "dQw4w9WgXcQ"
-                    }))
-                },
-                {
-                    id: 5,
-                    title: "Possession",
-                    episodes: Array.from({ length: 10 }, (_, i) => ({
-                        num: i + 1,
-                        title: `Episode ${i + 1}`,
-                        duration: "23m",
-                        videoId: "dQw4w9WgXcQ"
-                    }))
-                },
-                {
-                    id: 6,
-                    title: "Skybound",
-                    episodes: Array.from({ length: 10 }, (_, i) => ({
-                        num: i + 1,
-                        title: `Episode ${i + 1}`,
-                        duration: "23m",
-                        videoId: "dQw4w9WgXcQ"
-                    }))
-                },
-                {
-                    id: 7,
-                    title: "Hands of Time",
-                    episodes: Array.from({ length: 10 }, (_, i) => ({
-                        num: i + 1,
-                        title: `Episode ${i + 1}`,
-                        duration: "23m",
-                        videoId: "dQw4w9WgXcQ"
-                    }))
-                },
-                {
-                    id: 8,
-                    title: "Sons of Garmadon",
-                    episodes: Array.from({ length: 10 }, (_, i) => ({
-                        num: i + 1,
-                        title: `Episode ${i + 1}`,
-                        duration: "23m",
-                        videoId: "dQw4w9WgXcQ"
-                    }))
-                },
-                {
-                    id: 9,
-                    title: "Hunted",
-                    episodes: Array.from({ length: 10 }, (_, i) => ({
-                        num: i + 1,
-                        title: `Episode ${i + 1}`,
-                        duration: "23m",
-                        videoId: "dQw4w9WgXcQ"
-                    }))
-                },
-                {
-                    id: 10,
-                    title: "March of the Oni",
-                    episodes: Array.from({ length: 4 }, (_, i) => ({
-                        num: i + 1,
-                        title: `Episode ${i + 1}`,
-                        duration: "23m",
-                        videoId: "dQw4w9WgXcQ"
-                    }))
-                },
-                {
-                    id: 11,
-                    title: "Secrets of the Forbidden Spinjitzu",
-                    episodes: Array.from({ length: 30 }, (_, i) => ({
-                        num: i + 1,
-                        title: `Episode ${i + 1}`,
-                        duration: "11m",
-                        videoId: "dQw4w9WgXcQ"
-                    }))
-                },
-                {
-                    id: 12,
-                    title: "Prime Empire",
-                    episodes: Array.from({ length: 16 }, (_, i) => ({
-                        num: i + 1,
-                        title: `Episode ${i + 1}`,
-                        duration: "11m",
-                        videoId: "dQw4w9WgXcQ"
-                    }))
-                },
-                {
-                    id: 13,
-                    title: "Master of the Mountain",
-                    episodes: Array.from({ length: 16 }, (_, i) => ({
-                        num: i + 1,
-                        title: `Episode ${i + 1}`,
-                        duration: "11m",
-                        videoId: "dQw4w9WgXcQ"
-                    }))
-                },
-                {
-                    id: 14,
-                    title: "The Island",
-                    episodes: Array.from({ length: 4 }, (_, i) => ({
-                        num: i + 1,
-                        title: `Episode ${i + 1}`,
-                        duration: "11m",
-                        videoId: "dQw4w9WgXcQ"
-                    }))
-                },
-                {
-                    id: 15,
-                    title: "Seabound",
-                    episodes: Array.from({ length: 16 }, (_, i) => ({
-                        num: i + 1,
-                        title: `Episode ${i + 1}`,
-                        duration: "11m",
-                        videoId: "dQw4w9WgXcQ"
-                    }))
-                },
-                {
-                    id: 16,
-                    title: "Crystalized",
-                    episodes: Array.from({ length: 30 }, (_, i) => ({
-                        num: i + 1,
-                        title: `Episode ${i + 1}`,
-                        duration: "11m",
-                        videoId: "dQw4w9WgXcQ"
-                    }))
-                }
+                { id: 2, title: "Legacy of the Green Ninja", episodes: Array.from({ length: 13 }, (_, i) => ({ num: i+1, title: `Episode ${i+1}`, duration: "23m", videoId: "dQw4w9WgXcQ" })) },
+                { id: 3, title: "Rebooted", episodes: Array.from({ length: 8 }, (_, i) => ({ num: i+1, title: `Episode ${i+1}`, duration: "23m", videoId: "dQw4w9WgXcQ" })) },
+                { id: 4, title: "Tournament of Elements", episodes: Array.from({ length: 10 }, (_, i) => ({ num: i+1, title: `Episode ${i+1}`, duration: "23m", videoId: "dQw4w9WgXcQ" })) },
+                { id: 5, title: "Possession", episodes: Array.from({ length: 10 }, (_, i) => ({ num: i+1, title: `Episode ${i+1}`, duration: "23m", videoId: "dQw4w9WgXcQ" })) },
+                { id: 6, title: "Skybound", episodes: Array.from({ length: 10 }, (_, i) => ({ num: i+1, title: `Episode ${i+1}`, duration: "23m", videoId: "dQw4w9WgXcQ" })) },
+                { id: 7, title: "Hands of Time", episodes: Array.from({ length: 10 }, (_, i) => ({ num: i+1, title: `Episode ${i+1}`, duration: "23m", videoId: "dQw4w9WgXcQ" })) },
+                { id: 8, title: "Sons of Garmadon", episodes: Array.from({ length: 10 }, (_, i) => ({ num: i+1, title: `Episode ${i+1}`, duration: "23m", videoId: "dQw4w9WgXcQ" })) },
+                { id: 9, title: "Hunted", episodes: Array.from({ length: 10 }, (_, i) => ({ num: i+1, title: `Episode ${i+1}`, duration: "23m", videoId: "dQw4w9WgXcQ" })) },
+                { id: 10, title: "March of the Oni", episodes: Array.from({ length: 4 }, (_, i) => ({ num: i+1, title: `Episode ${i+1}`, duration: "23m", videoId: "dQw4w9WgXcQ" })) },
+                { id: 11, title: "Secrets of the Forbidden Spinjitzu", episodes: Array.from({ length: 30 }, (_, i) => ({ num: i+1, title: `Episode ${i+1}`, duration: "11m", videoId: "dQw4w9WgXcQ" })) },
+                { id: 12, title: "Prime Empire", episodes: Array.from({ length: 16 }, (_, i) => ({ num: i+1, title: `Episode ${i+1}`, duration: "11m", videoId: "dQw4w9WgXcQ" })) },
+                { id: 13, title: "Master of the Mountain", episodes: Array.from({ length: 16 }, (_, i) => ({ num: i+1, title: `Episode ${i+1}`, duration: "11m", videoId: "dQw4w9WgXcQ" })) },
+                { id: 14, title: "The Island", episodes: Array.from({ length: 4 }, (_, i) => ({ num: i+1, title: `Episode ${i+1}`, duration: "11m", videoId: "dQw4w9WgXcQ" })) },
+                { id: 15, title: "Seabound", episodes: Array.from({ length: 16 }, (_, i) => ({ num: i+1, title: `Episode ${i+1}`, duration: "11m", videoId: "dQw4w9WgXcQ" })) },
+                { id: 16, title: "Crystalized", episodes: Array.from({ length: 30 }, (_, i) => ({ num: i+1, title: `Episode ${i+1}`, duration: "11m", videoId: "dQw4w9WgXcQ" })) }
             ];
+
+            // ==================== MAPPING THUMBNAIL ====================
+            // Ini adalah daftar URL gambar untuk setiap episode.
+            // Kamu bisa menambahkan URL lain di sini.
+            function getThumbnailUrl(seasonId, episodeNum) {
+                const thumbnails = {
+                    // Episode Pilot
+                    '0-1': 'https://static.wikia.nocookie.net/ninjago/images/c/c4/MoS01TitleCard.png/revision/latest/scale-to-width-down/268?cb=20160206204657',
+                    '0-2': 'https://static.wikia.nocookie.net/ninjago/images/9/9a/Ep.3_title.png/revision/latest?cb=20120414050709',
+                    
+                    // Season 1
+                    '1-1': 'https://static.wikia.nocookie.net/ninjago/images/e/e9/MOSEp1TitleCard.png/revision/latest?cb=20151228194923', // <-- GAMBAR YANG KAMU BERIKAN
+                    '1-2': 'https://static.wikia.nocookie.net/ninjago/images/a/a3/MoS2TitleCard.png/revision/latest/scale-to-width-down/268?cb=20160209134819',
+                    '1-3': 'https://static.wikia.nocookie.net/ninjago/images/5/5e/MoS3TitleCard.png/revision/latest?cb=20160311215840',
+                    '1-4': 'https://static.wikia.nocookie.net/ninjago/images/c/c8/MoS4TitleCard.png/revision/latest?cb=20160608151231',
+                    '1-5': 'https://static.wikia.nocookie.net/ninjago/images/c/cd/MoS5TitleCard.png/revision/latest/scale-to-width-down/268?cb=20160715015303',
+                    '1-6': 'https://static.wikia.nocookie.net/ninjago/images/4/4f/The_Snake_King_Title_Screen.png/revision/latest/scale-to-width-down/268?cb=20241001050525',
+                    '1-7': 'https://static.wikia.nocookie.net/ninjago/images/1/1a/MoS7TitleCard.png/revision/latest/scale-to-width-down/268?cb=20161205214323',
+                    '1-8': 'https://static.wikia.nocookie.net/ninjago/images/b/b2/Once_Bitten%2C_Twice_Shy_Title_Screen.png/revision/latest/scale-to-width-down/268?cb=20241001053226',
+                    '1-9': 'https://static.wikia.nocookie.net/ninjago/images/e/ec/The_Royal_Blacksmiths_Title_Screen.png/revision/latest/scale-to-width-down/268?cb=20241001053330',
+                    '1-10': 'https://static.wikia.nocookie.net/ninjago/images/1/1e/Thegreenninjatitlescreen.png/revision/latest?cb=20241001053500',
+                    '1-11': 'https://static.wikia.nocookie.net/ninjago/images/f/fc/Ep.11_title.png/revision/latest?cb=20230827163548',
+                    '1-12': 'https://static.wikia.nocookie.net/ninjago/images/b/bd/Riseof-intro.png/revision/latest?cb=20230827163615',
+                    '1-13': 'https://static.wikia.nocookie.net/ninjago/images/e/e0/MoS13TitleCard.png/revision/latest?cb=20161125171551',
+                };
+            
+                // Membuat kunci unik berdasarkan season dan episode, misalnya "1-3" untuk Season 1 Episode 3
+                const key = `${seasonId}-${episodeNum}`;
+            
+                // Cek apakah URL untuk episode ini ada di dalam daftar
+                if (thumbnails[key]) {
+                    // Jika ada, gunakan URL tersebut
+                    return thumbnails[key];
+                } else {
+                    // Jika belum ada, tampilkan placeholder sebagai cadangan
+                    const seasonLabel = seasonId === 0 ? 'Pilot' : `S${seasonId}`;
+                    return `https://via.placeholder.com/400x225/1e293b/facc15?text=${seasonLabel}E${episodeNum}`;
+                }
+            }
 
             // ========== ELEMEN DOM ==========
             const seasonListEl = document.getElementById('seasonList');
             const selectedSeasonTitleEl = document.getElementById('selectedSeasonTitle');
             const episodeCountEl = document.getElementById('episodeCount');
             const episodeGridEl = document.getElementById('episodeGrid');
-            const videoPlayer = document.getElementById('videoPlayer');
+            const playerContainer = document.getElementById('playerContainer');
+            const playFirstBtn = document.getElementById('playFirstEpisode');
 
             // State aktif
-            let activeSeasonId = 0;
+            let activeSeasonId = 0; // default Pilot
 
             // ========== RENDER SEASON BUTTONS ==========
             function renderSeasonButtons() {
@@ -752,7 +875,7 @@
                     btn.className = `season-btn ${season.id === activeSeasonId ? 'active' : ''}`;
                     btn.setAttribute('data-season-id', season.id);
                     btn.innerHTML = `
-                        <span>Season ${season.id}</span>
+                        <span>Season ${season.id === 0 ? 'Pilot' : season.id}</span>
                         <span class="season-badge">${season.episodes.length}</span>
                     `;
                     btn.addEventListener('click', () => {
@@ -767,18 +890,21 @@
                 const season = seasons.find(s => s.id === seasonId);
                 if (!season) return;
 
-                // Update header
-                selectedSeasonTitleEl.textContent = `Season ${season.id} · ${season.title}`;
+                selectedSeasonTitleEl.textContent = season.id === 0 ? 'Pilot' : `Season ${season.id} · ${season.title}`;
                 episodeCountEl.textContent = `${season.episodes.length} episode${season.episodes.length > 1 ? 's' : ''}`;
 
-                // Render grid
                 episodeGridEl.innerHTML = '';
                 season.episodes.forEach(ep => {
                     const card = document.createElement('div');
                     card.className = 'episode-card';
-                    card.setAttribute('data-episode-num', ep.num);
+                    card.dataset.epNum = ep.num;
+                    card.dataset.videoId = ep.videoId;
+                    
+                    // Dapatkan URL thumbnail
+                    const thumbUrl = getThumbnailUrl(seasonId, ep.num);
+                    
                     card.innerHTML = `
-                        <div class="episode-thumb">🎬</div>
+                        <div class="episode-thumb" style="background-image: url('${thumbUrl}');"></div>
                         <div class="episode-info">
                             <div class="episode-title">
                                 <span>${ep.num}. ${ep.title}</span>
@@ -787,51 +913,26 @@
                         </div>
                     `;
                     card.addEventListener('click', () => {
-                        const playerContainer = document.getElementById('playerContainer');
-                        
-                        // Pilot episodes
-                        if (seasonId === 0 && ep.num === 1) {
-                            playerContainer.innerHTML = '<iframe height="360" width="640" frameborder="0" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" src="https://krakenfiles.com/embed-video/64vovv6HlM" style="width: 100%; height: 100%; border: none;"></iframe>';
-                        } else if (seasonId === 0 && ep.num === 2) {
-                            playerContainer.innerHTML = '<iframe height="360" width="640" frameborder="0" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" src="https://krakenfiles.com/embed-video/XFRepuGHil" style="width: 100%; height: 100%; border: none;"></iframe>';
-                        }
-                        // Season 1 episodes
-                        else if (seasonId === 1 && ep.num === 1) {
-                            playerContainer.innerHTML = '<iframe height="360" width="640" frameborder="0" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" src="https://krakenfiles.com/embed-video/LX2QtfuaFs" style="width: 100%; height: 100%; border: none;"></iframe>';
-                        } else if (seasonId === 1 && ep.num === 2) {
-                            playerContainer.innerHTML = '<iframe height="360" width="640" frameborder="0" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" src="https://krakenfiles.com/embed-video/EJvX6cF0dW" style="width: 100%; height: 100%; border: none;"></iframe>';
-                        } else if (seasonId === 1 && ep.num === 3) {
-                            playerContainer.innerHTML = '<iframe height="360" width="640" frameborder="0" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" src="https://krakenfiles.com/embed-video/K4FKssEy7R" style="width: 100%; height: 100%; border: none;"></iframe>';
-                        } else if (seasonId === 1 && ep.num === 4) {
-                            playerContainer.innerHTML = '<iframe height="360" width="640" frameborder="0" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" src="https://krakenfiles.com/embed-video/9oDPx4uUFX" style="width: 100%; height: 100%; border: none;"></iframe>';
-                        } else if (seasonId === 1 && ep.num === 5) {
-                            playerContainer.innerHTML = '<iframe height="360" width="640" frameborder="0" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" src="https://krakenfiles.com/embed-video/lXcB5dLAkO" style="width: 100%; height: 100%; border: none;"></iframe>';
-                        } else if (seasonId === 1 && ep.num === 6) {
-                            playerContainer.innerHTML = '<iframe height="360" width="640" frameborder="0" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" src="https://krakenfiles.com/embed-video/Ej1K4tJB7D" style="width: 100%; height: 100%; border: none;"></iframe>';
-                        } else if (seasonId === 1 && ep.num === 7) {
-                            playerContainer.innerHTML = '<iframe height="360" width="640" frameborder="0" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" src="https://krakenfiles.com/embed-video/R8KtFVclZu" style="width: 100%; height: 100%; border: none;"></iframe>';
-                        } else if (seasonId === 1 && ep.num === 8) {
-                            playerContainer.innerHTML = '<iframe height="360" width="640" frameborder="0" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" src="https://krakenfiles.com/embed-video/F65JORm1rF" style="width: 100%; height: 100%; border: none;"></iframe>';
-                        } else if (seasonId === 1 && ep.num === 9) {
-                            playerContainer.innerHTML = '<iframe height="360" width="640" frameborder="0" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" src="https://krakenfiles.com/embed-video/ArvQ61MKqz" style="width: 100%; height: 100%; border: none;"></iframe>';
-                        } else if (seasonId === 1 && ep.num === 10) {
-                            playerContainer.innerHTML = '<iframe height="360" width="640" frameborder="0" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" src="https://krakenfiles.com/embed-video/iigedPWZDI" style="width: 100%; height: 100%; border: none;"></iframe>';
-                        } else if (seasonId === 1 && ep.num === 11) {
-                            playerContainer.innerHTML = '<iframe height="360" width="640" frameborder="0" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" src="https://krakenfiles.com/embed-video/6VXYCQGMU9" style="width: 100%; height: 100%; border: none;"></iframe>';
-                        } else if (seasonId === 1 && ep.num === 12) {
-                            playerContainer.innerHTML = '<iframe height="360" width="640" frameborder="0" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" src="https://krakenfiles.com/embed-video/w4WVbuWNKO" style="width: 100%; height: 100%; border: none;"></iframe>';
-                        } else if (seasonId === 1 && ep.num === 13) {
-                            playerContainer.innerHTML = '<iframe height="360" width="640" frameborder="0" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" src="https://krakenfiles.com/embed-video/m3ajeQKVdF" style="width: 100%; height: 100%; border: none;"></iframe>';
-                        }
+                        updatePlayer(seasonId, ep.num);
                     });
                     episodeGridEl.appendChild(card);
                 });
             }
 
+            // ========== UPDATE PLAYER BERDASARKAN EPISODE ==========
+            function updatePlayer(seasonId, episodeNum) {
+                const season = seasons.find(s => s.id === seasonId);
+                if (!season) return;
+                const episode = season.episodes.find(ep => ep.num === episodeNum);
+                if (!episode) return;
+
+                const embedUrl = `https://krakenfiles.com/embed-video/${episode.videoId}`;
+                playerContainer.innerHTML = `<iframe height="360" width="640" frameborder="0" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" src="${embedUrl}" style="width: 100%; height: 100%; border: none;"></iframe>`;
+            }
+
             // ========== SET ACTIVE SEASON ==========
             function setActiveSeason(seasonId) {
                 activeSeasonId = seasonId;
-                // Update tombol akftif
                 document.querySelectorAll('.season-btn').forEach(btn => {
                     const id = parseInt(btn.dataset.seasonId);
                     btn.classList.toggle('active', id === seasonId);
@@ -839,11 +940,35 @@
                 renderEpisodes(seasonId);
             }
 
+            // ========== TOMBOL PLAY DI HERO ==========
+            playFirstBtn.addEventListener('click', () => {
+                const season = seasons.find(s => s.id === activeSeasonId);
+                if (season && season.episodes.length > 0) {
+                    updatePlayer(activeSeasonId, season.episodes[0].num);
+                }
+            });
+
+            // ========== TAB RELATED ==========
+            const seriesTab = document.getElementById('seriesTab');
+            const relatedTab = document.getElementById('relatedTab');
+
+            relatedTab.addEventListener('click', () => {
+                seriesTab.classList.remove('active');
+                relatedTab.classList.add('active');
+                episodeGridEl.innerHTML = '<div class="no-episodes">🎬 Rekomendasi acara lain akan tampil di sini.</div>';
+                selectedSeasonTitleEl.textContent = 'Related Shows';
+                episodeCountEl.textContent = '';
+            });
+
+            seriesTab.addEventListener('click', () => {
+                relatedTab.classList.remove('active');
+                seriesTab.classList.add('active');
+                renderEpisodes(activeSeasonId);
+            });
+
             // ========== INIT ==========
             renderSeasonButtons();
-            setActiveSeason(0); // default season Pilot
-
-            // Optional: jika ingin episode pertama otomatis diputar saat season diganti? Tidak, biar user pilih.
+            setActiveSeason(0); // mulai dari Pilot
         })();
     </script>
 </body>
