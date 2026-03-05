@@ -1,77 +1,680 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#1f1f1f">
-    <title>Ninjagoku - Nonton Ninjago Sub Indo</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="manifest" href="manifest.json">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Ninjagoku</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+        }
+
+        body {
+            color: #e2e8f0;
+            line-height: 1.5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0f172a 0%, #1a2a4a 25%, #0f172a 50%, #1a3a5a 75%, #0f172a 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            z-index: -2;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(250, 204, 21, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(239, 68, 68, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 20%, rgba(59, 130, 246, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Particle animations */
+        @keyframes float1 {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+                opacity: 0.3;
+            }
+            50% {
+                transform: translate(100px, -100px) scale(1.5);
+                opacity: 0.6;
+            }
+        }
+
+        @keyframes float2 {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+                opacity: 0.2;
+            }
+            50% {
+                transform: translate(-150px, 150px) scale(0.8);
+                opacity: 0.5;
+            }
+        }
+
+        @keyframes float3 {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+                opacity: 0.25;
+            }
+            50% {
+                transform: translate(80px, 120px) scale(1.3);
+                opacity: 0.55;
+            }
+        }
+
+        .particle {
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle-1 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(250, 204, 21, 0.15) 0%, transparent 70%);
+            top: -100px;
+            left: 10%;
+            animation: float1 20s ease-in-out infinite;
+        }
+
+        .particle-2 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(239, 68, 68, 0.12) 0%, transparent 70%);
+            bottom: -50px;
+            right: 15%;
+            animation: float2 25s ease-in-out infinite;
+        }
+
+        .particle-3 {
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+            top: 50%;
+            left: -100px;
+            animation: float3 22s ease-in-out infinite;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem;
+            flex: 1;
+        }
+
+        /* header */
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #334155;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #fbbf24, #ef4444);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header span {
+            font-size: 1.2rem;
+            color: #94a3b8;
+            margin-left: auto;
+        }
+
+        /* main layout */
+        .content-wrapper {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        /* season sidebar */
+        .season-sidebar {
+            flex: 0 0 240px;
+            background: #1e293b;
+            border-radius: 1.5rem;
+            padding: 1.5rem 1rem;
+            height: fit-content;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.5);
+        }
+
+        .season-sidebar h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #facc15;
+            letter-spacing: 1px;
+            padding-left: 0.5rem;
+        }
+
+        .season-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .season-btn {
+            background: transparent;
+            border: none;
+            color: #cbd5e1;
+            text-align: left;
+            padding: 0.8rem 1rem;
+            border-radius: 2rem;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .season-btn:hover {
+            background: #334155;
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .season-btn.active {
+            background: #facc15;
+            color: #0f172a;
+            font-weight: 600;
+            box-shadow: 0 4px 12px #facc1540;
+        }
+
+        .season-badge {
+            background: #475569;
+            color: white;
+            border-radius: 20px;
+            padding: 0.2rem 0.7rem;
+            font-size: 0.8rem;
+            margin-left: auto;
+        }
+
+        .season-btn.active .season-badge {
+            background: #0f172a;
+            color: #facc15;
+        }
+
+        /* main content */
+        .main-content {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        /* video player */
+        .player-section {
+            background: #000;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            aspect-ratio: 16 / 9;
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 30px -10px black;
+        }
+
+        .player-section iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .episode-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .episode-header h3 {
+            font-size: 1.8rem;
+            color: #f1f5f9;
+        }
+
+        .episode-count {
+            background: #334155;
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+        }
+
+        /* episode grid */
+        .episode-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1rem;
+        }
+
+        .episode-card {
+            background: #1e293b;
+            border-radius: 1rem;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid #334155;
+        }
+
+        .episode-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 20px rgba(250, 204, 21, 0.2);
+            border-color: #facc15;
+        }
+
+        .episode-thumb {
+            background: #0f172a;
+            aspect-ratio: 16/9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #475569;
+            font-size: 2rem;
+        }
+
+        .episode-info {
+            padding: 1rem;
+        }
+
+        .episode-title {
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .episode-number {
+            color: #facc15;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .episode-duration {
+            font-size: 0.85rem;
+            color: #94a3b8;
+        }
+
+        .no-episodes {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 3rem;
+            background: #1e293b;
+            border-radius: 1rem;
+            color: #94a3b8;
+        }
+
+        /* footer */
+        .footer {
+            margin-top: 3rem;
+            text-align: center;
+            color: #64748b;
+            border-top: 1px solid #334155;
+            padding-top: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .content-wrapper {
+                flex-direction: column;
+            }
+            .season-sidebar {
+                flex: auto;
+                width: 100%;
+            }
+            .season-list {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+            .season-btn {
+                flex: 1 0 auto;
+                justify-content: center;
+            }
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <div class="logo">🥷 Ninjagoku</div>
-        <div class="search-box">
-            <input type="text" id="searchInput" placeholder="Cari Season atau Episode...">
-        </div>
-    </header>
-
-    <main>
-        <!-- Bagian Trailer / Rekomendasi -->
-        <div class="trailer-section">
-            <div class="section-title">🔥 Trailer Terbaru</div>
-            <div class="video-container">
-                <iframe src="https://archive.org/embed/trailer-ninjago-dragon-rising-s-4" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen></iframe>
-            </div>
+    <div class="particle particle-1"></div>
+    <div class="particle particle-2"></div>
+    <div class="particle particle-3"></div>
+    <div class="container">
+        <div class="header">
+            <h1>NINJAGOKU</h1>
+            <span>⛩️Made by Fled⛩️</span>
         </div>
 
-        <div class="grid-container" id="filmList">
-            <!-- Film akan dimuat di sini via JS -->
-        </div>
-    </main>
+        <div class="content-wrapper">
+            <!-- SEASON SIDEBAR -->
+            <aside class="season-sidebar">
+                <h2>⛩️ Seasons</h2>
+                <div class="season-list" id="seasonList"></div>
+            </aside>
 
-    <script>
-        let allFilms = [];
-
-        // Fetch Data dari JSON
-        fetch('films.json')
-            .then(response => response.json())
-            .then(films => {
-                allFilms = films;
-                renderFilms(films);
-            })
-            .catch(err => console.error("Gagal memuat films.json", err));
-
-        function renderFilms(films) {
-            const container = document.getElementById('filmList');
-            container.innerHTML = films.map(film => `
-                <div class="card" onclick="location.href='play.html?id=${film.id}'">
-                    <div class="card-content">
-                        <div class="card-title">${film.title}</div>
-                        <div class="card-type">${film.episodes.length} Episode</div>
-                    </div>
+            <!-- MAIN CONTENT -->
+            <main class="main-content">
+                <!-- VIDEO PLAYER -->
+                <div class="player-section" id="playerContainer">
+                    <iframe id="videoPlayer" src="https://www.youtube.com/embed/9P9E_GB6EIU?si=fNQvO_f0Z6p05SgQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
-            `).join('');
-        }
 
-        // Search Logic
-        document.getElementById('searchInput').addEventListener('input', (e) => {
-            const term = e.target.value.toLowerCase();
-            const filtered = allFilms.filter(f => f.title.toLowerCase().includes(term));
-            renderFilms(filtered);
-        });
-    </script>
-    
+                <!-- EPISODE HEADER -->
+                <div class="episode-header">
+                    <h3 id="selectedSeasonTitle">Season 1 · Rise of the Snakes</h3>
+                    <span class="episode-count" id="episodeCount">13 episodes</span>
+                </div>
+
+                <!-- EPISODE GRID -->
+                <div class="episode-grid" id="episodeGrid"></div>
+            </main>
+        </div>
+
+        <div class="footer">
+            ⚡ Fan-made streaming showcase · Data berdasarkan Ninjago Wiki
+        </div>
+    </div>
+
     <script>
-        // Register Service Worker untuk PWA
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('./service-worker.js')
-                    .then(reg => console.log('Service Worker registered!', reg))
-                    .catch(err => console.log('Service Worker registration failed:', err));
-            });
-        }
+        (function() {
+            // ==================== DATA NINJAGO ====================
+            // Data season dan episode (hingga season 16, beberapa season memiliki jumlah episode bervariasi)
+            const seasons = [
+                {
+                    id: 0,
+                    title: "Pilot",
+                    episodes: [
+                        { num: 1, title: "Way of the Ninja", duration: "22.58m", videoId: "9P9E_GB6EIU" },
+                        { num: 2, title: "King of Shadows", duration: "21.55m", videoId: "dQw4w9WgXcQ" }
+                    ]
+                },
+                {
+                    id: 1,
+                    title: "Rise of the Snakes",
+                    episodes: [
+                        { num: 1, title: "Rise of the Snakes", duration: "23m", videoId: "9P9E_GB6EIU" },
+                        { num: 2, title: "Home", duration: "23m", videoId: "dQw4w9WgXcQ" },
+                        { num: 3, title: "Snakebit", duration: "23m", videoId: "dQw4w9WgXcQ" },
+                        { num: 4, title: "Never Trust a Snake", duration: "23m", videoId: "dQw4w9WgXcQ" },
+                        { num: 5, title: "Can of Worms", duration: "23m", videoId: "dQw4w9WgXcQ" },
+                        { num: 6, title: "The Snake King", duration: "23m", videoId: "dQw4w9WgXcQ" },
+                        { num: 7, title: "Tick Tock", duration: "23m", videoId: "dQw4w9WgXcQ" },
+                        { num: 8, title: "Once Bitten, Twice Shy", duration: "23m", videoId: "dQw4w9WgXcQ" },
+                        { num: 9, title: "The Royal Blacksmiths", duration: "23m", videoId: "dQw4w9WgXcQ" },
+                        { num: 10, title: "The Green Ninja", duration: "23m", videoId: "dQw4w9WgXcQ" },
+                        { num: 11, title: "All of Nothing", duration: "23m", videoId: "dQw4w9WgXcQ" },
+                        { num: 12, title: "The Rise of the Great Devourer", duration: "23m", videoId: "dQw4w9WgXcQ" },
+                        { num: 13, title: "Day of the Great Devourer", duration: "23m", videoId: "dQw4w9WgXcQ" }
+                    ]
+                },
+                {
+                    id: 2,
+                    title: "Legacy of the Green Ninja",
+                    episodes: Array.from({ length: 13 }, (_, i) => ({
+                        num: i + 1,
+                        title: `Episode ${i + 1}`,
+                        duration: "23m",
+                        videoId: "dQw4w9WgXcQ"
+                    }))
+                },
+                {
+                    id: 3,
+                    title: "Rebooted",
+                    episodes: Array.from({ length: 8 }, (_, i) => ({
+                        num: i + 1,
+                        title: `Episode ${i + 1}`,
+                        duration: "23m",
+                        videoId: "dQw4w9WgXcQ"
+                    }))
+                },
+                {
+                    id: 4,
+                    title: "Tournament of Elements",
+                    episodes: Array.from({ length: 10 }, (_, i) => ({
+                        num: i + 1,
+                        title: `Episode ${i + 1}`,
+                        duration: "23m",
+                        videoId: "dQw4w9WgXcQ"
+                    }))
+                },
+                {
+                    id: 5,
+                    title: "Possession",
+                    episodes: Array.from({ length: 10 }, (_, i) => ({
+                        num: i + 1,
+                        title: `Episode ${i + 1}`,
+                        duration: "23m",
+                        videoId: "dQw4w9WgXcQ"
+                    }))
+                },
+                {
+                    id: 6,
+                    title: "Skybound",
+                    episodes: Array.from({ length: 10 }, (_, i) => ({
+                        num: i + 1,
+                        title: `Episode ${i + 1}`,
+                        duration: "23m",
+                        videoId: "dQw4w9WgXcQ"
+                    }))
+                },
+                {
+                    id: 7,
+                    title: "Hands of Time",
+                    episodes: Array.from({ length: 10 }, (_, i) => ({
+                        num: i + 1,
+                        title: `Episode ${i + 1}`,
+                        duration: "23m",
+                        videoId: "dQw4w9WgXcQ"
+                    }))
+                },
+                {
+                    id: 8,
+                    title: "Sons of Garmadon",
+                    episodes: Array.from({ length: 10 }, (_, i) => ({
+                        num: i + 1,
+                        title: `Episode ${i + 1}`,
+                        duration: "23m",
+                        videoId: "dQw4w9WgXcQ"
+                    }))
+                },
+                {
+                    id: 9,
+                    title: "Hunted",
+                    episodes: Array.from({ length: 10 }, (_, i) => ({
+                        num: i + 1,
+                        title: `Episode ${i + 1}`,
+                        duration: "23m",
+                        videoId: "dQw4w9WgXcQ"
+                    }))
+                },
+                {
+                    id: 10,
+                    title: "March of the Oni",
+                    episodes: Array.from({ length: 4 }, (_, i) => ({
+                        num: i + 1,
+                        title: `Episode ${i + 1}`,
+                        duration: "23m",
+                        videoId: "dQw4w9WgXcQ"
+                    }))
+                },
+                {
+                    id: 11,
+                    title: "Secrets of the Forbidden Spinjitzu",
+                    episodes: Array.from({ length: 30 }, (_, i) => ({
+                        num: i + 1,
+                        title: `Episode ${i + 1}`,
+                        duration: "11m",
+                        videoId: "dQw4w9WgXcQ"
+                    }))
+                },
+                {
+                    id: 12,
+                    title: "Prime Empire",
+                    episodes: Array.from({ length: 16 }, (_, i) => ({
+                        num: i + 1,
+                        title: `Episode ${i + 1}`,
+                        duration: "11m",
+                        videoId: "dQw4w9WgXcQ"
+                    }))
+                },
+                {
+                    id: 13,
+                    title: "Master of the Mountain",
+                    episodes: Array.from({ length: 16 }, (_, i) => ({
+                        num: i + 1,
+                        title: `Episode ${i + 1}`,
+                        duration: "11m",
+                        videoId: "dQw4w9WgXcQ"
+                    }))
+                },
+                {
+                    id: 14,
+                    title: "The Island",
+                    episodes: Array.from({ length: 4 }, (_, i) => ({
+                        num: i + 1,
+                        title: `Episode ${i + 1}`,
+                        duration: "11m",
+                        videoId: "dQw4w9WgXcQ"
+                    }))
+                },
+                {
+                    id: 15,
+                    title: "Seabound",
+                    episodes: Array.from({ length: 16 }, (_, i) => ({
+                        num: i + 1,
+                        title: `Episode ${i + 1}`,
+                        duration: "11m",
+                        videoId: "dQw4w9WgXcQ"
+                    }))
+                },
+                {
+                    id: 16,
+                    title: "Crystalized",
+                    episodes: Array.from({ length: 30 }, (_, i) => ({
+                        num: i + 1,
+                        title: `Episode ${i + 1}`,
+                        duration: "11m",
+                        videoId: "dQw4w9WgXcQ"
+                    }))
+                }
+            ];
+
+            // ========== ELEMEN DOM ==========
+            const seasonListEl = document.getElementById('seasonList');
+            const selectedSeasonTitleEl = document.getElementById('selectedSeasonTitle');
+            const episodeCountEl = document.getElementById('episodeCount');
+            const episodeGridEl = document.getElementById('episodeGrid');
+            const videoPlayer = document.getElementById('videoPlayer');
+
+            // State aktif
+            let activeSeasonId = 0;
+
+            // ========== RENDER SEASON BUTTONS ==========
+            function renderSeasonButtons() {
+                seasonListEl.innerHTML = '';
+                seasons.forEach(season => {
+                    const btn = document.createElement('button');
+                    btn.className = `season-btn ${season.id === activeSeasonId ? 'active' : ''}`;
+                    btn.setAttribute('data-season-id', season.id);
+                    btn.innerHTML = `
+                        <span>Season ${season.id}</span>
+                        <span class="season-badge">${season.episodes.length}</span>
+                    `;
+                    btn.addEventListener('click', () => {
+                        setActiveSeason(season.id);
+                    });
+                    seasonListEl.appendChild(btn);
+                });
+            }
+
+            // ========== RENDER EPISODE GRID ==========
+            function renderEpisodes(seasonId) {
+                const season = seasons.find(s => s.id === seasonId);
+                if (!season) return;
+
+                // Update header
+                selectedSeasonTitleEl.textContent = `Season ${season.id} · ${season.title}`;
+                episodeCountEl.textContent = `${season.episodes.length} episode${season.episodes.length > 1 ? 's' : ''}`;
+
+                // Render grid
+                episodeGridEl.innerHTML = '';
+                season.episodes.forEach(ep => {
+                    const card = document.createElement('div');
+                    card.className = 'episode-card';
+                    card.setAttribute('data-episode-num', ep.num);
+                    card.innerHTML = `
+                        <div class="episode-thumb">🎬</div>
+                        <div class="episode-info">
+                            <div class="episode-title">
+                                <span>${ep.num}. ${ep.title}</span>
+                            </div>
+                            <div class="episode-duration">${ep.duration}</div>
+                        </div>
+                    `;
+                    card.addEventListener('click', () => {
+                        // Check if it's Pilot episode 1
+                        if (seasonId === 0 && ep.num === 1) {
+                            // Use Krakenfiles embed for Pilot ep 1
+                            const playerContainer = document.getElementById('playerContainer');
+                            playerContainer.innerHTML = '<iframe height="360" width="640" frameborder="0" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" src="https://krakenfiles.com/embed-video/64vovv6HlM" style="width: 100%; height: auto; aspect-ratio: 16/9; border-radius: 1.5rem;"></iframe>';
+                        } else {
+                            // Use YouTube embed for other episodes
+                            videoPlayer.src = `https://www.youtube.com/embed/${ep.videoId}?autoplay=1`;
+                        }
+                    });
+                    episodeGridEl.appendChild(card);
+                });
+            }
+
+            // ========== SET ACTIVE SEASON ==========
+            function setActiveSeason(seasonId) {
+                activeSeasonId = seasonId;
+                // Update tombol akftif
+                document.querySelectorAll('.season-btn').forEach(btn => {
+                    const id = parseInt(btn.dataset.seasonId);
+                    btn.classList.toggle('active', id === seasonId);
+                });
+                renderEpisodes(seasonId);
+            }
+
+            // ========== INIT ==========
+            renderSeasonButtons();
+            setActiveSeason(0); // default season Pilot
+
+            // Optional: jika ingin episode pertama otomatis diputar saat season diganti? Tidak, biar user pilih.
+        })();
     </script>
 </body>
 </html>
