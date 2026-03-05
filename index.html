@@ -531,7 +531,7 @@
             <main class="main-content">
                 <!-- VIDEO PLAYER -->
                 <div class="player-section" id="playerContainer">
-                    <iframe id="videoPlayer" src="https://www.youtube.com/embed/9P9E_GB6EIU?si=fNQvO_f0Z6p05SgQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <iframe height="360" width="640" frameborder="0" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" src="https://krakenfiles.com/embed-video/64vovv6HlM" style="width: 100%; height: 100%; border: none;"></iframe>
                 </div>
 
                 <!-- EPISODE HEADER -->
@@ -795,10 +795,7 @@
                         } else if (seasonId === 0 && ep.num === 2) {
                             // Use Krakenfiles embed for Pilot ep 2
                             const playerContainer = document.getElementById('playerContainer');
-                            playerContainer.innerHTML = '<iframe height="360" width="640" frameborder="0" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" src="https://krakenfiles.com/embed-video/rb8RC2Xpoc" style="width: 100%; height: auto; aspect-ratio: 16/9; border-radius: 1.5rem;"></iframe>';
-                        } else {
-                            // Use YouTube embed for other episodes
-                            videoPlayer.src = `https://www.youtube.com/embed/${ep.videoId}?autoplay=1`;
+                            playerContainer.innerHTML = '<iframe height="360" width="640" frameborder="0" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" src="https://krakenfiles.com/embed-video/XFRepuGHil" style="width: 100%; height: auto; aspect-ratio: 16/9; border-radius: 1.5rem;"></iframe>';
                         }
                     });
                     episodeGridEl.appendChild(card);
