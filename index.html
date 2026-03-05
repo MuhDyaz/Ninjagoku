@@ -787,15 +787,17 @@
                         </div>
                     `;
                     card.addEventListener('click', () => {
-                        // Check if it's Pilot episodes
+                        const playerContainer = document.getElementById('playerContainer');
+                        
+                        // Pilot episodes
                         if (seasonId === 0 && ep.num === 1) {
-                            // Use Krakenfiles embed for Pilot ep 1
-                            const playerContainer = document.getElementById('playerContainer');
-                            playerContainer.innerHTML = '<iframe height="360" width="640" frameborder="0" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" src="https://krakenfiles.com/embed-video/64vovv6HlM" style="width: 100%; height: auto; aspect-ratio: 16/9; border-radius: 1.5rem;"></iframe>';
+                            playerContainer.innerHTML = '<iframe height="360" width="640" frameborder="0" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" src="https://krakenfiles.com/embed-video/64vovv6HlM" style="width: 100%; height: 100%; border: none;"></iframe>';
                         } else if (seasonId === 0 && ep.num === 2) {
-                            // Use Krakenfiles embed for Pilot ep 2
-                            const playerContainer = document.getElementById('playerContainer');
-                            playerContainer.innerHTML = '<iframe height="360" width="640" frameborder="0" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" src="https://krakenfiles.com/embed-video/XFRepuGHil" style="width: 100%; height: auto; aspect-ratio: 16/9; border-radius: 1.5rem;"></iframe>';
+                            playerContainer.innerHTML = '<iframe height="360" width="640" frameborder="0" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" src="https://krakenfiles.com/embed-video/XFRepuGHil" style="width: 100%; height: 100%; border: none;"></iframe>';
+                        }
+                        // Season 1 episodes
+                        else if (seasonId === 1 && ep.num === 1) {
+                            playerContainer.innerHTML = '<iframe height="360" width="640" frameborder="0" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" src="https://krakenfiles.com/embed-video/LX2QtfuaFs" style="width: 100%; height: 100%; border: none;"></iframe>';
                         }
                     });
                     episodeGridEl.appendChild(card);
