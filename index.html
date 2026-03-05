@@ -348,21 +348,164 @@
             padding-top: 1.5rem;
         }
 
+        /* Mobile Optimization */
         @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .header span {
+                font-size: 1rem;
+                margin-left: 0;
+            }
+
             .content-wrapper {
                 flex-direction: column;
+                gap: 1rem;
             }
+
             .season-sidebar {
                 flex: auto;
                 width: 100%;
+                padding: 1rem;
             }
+
+            .season-sidebar h2 {
+                font-size: 1.2rem;
+                margin-bottom: 1rem;
+            }
+
             .season-list {
                 flex-direction: row;
                 flex-wrap: wrap;
+                gap: 0.4rem;
             }
+
             .season-btn {
                 flex: 1 0 auto;
+                min-width: calc(50% - 0.2rem);
                 justify-content: center;
+                padding: 0.7rem 0.8rem;
+                font-size: 0.9rem;
+            }
+
+            .season-badge {
+                font-size: 0.75rem;
+                padding: 0.15rem 0.5rem;
+            }
+
+            .player-section {
+                margin-bottom: 1.5rem;
+            }
+
+            .episode-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+                margin-bottom: 1rem;
+            }
+
+            .episode-header h3 {
+                font-size: 1.3rem;
+            }
+
+            .episode-count {
+                padding: 0.25rem 0.8rem;
+                font-size: 0.8rem;
+            }
+
+            .episode-grid {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+                gap: 0.8rem;
+            }
+
+            .episode-card {
+                border-radius: 0.8rem;
+            }
+
+            .episode-thumb {
+                font-size: 1.5rem;
+            }
+
+            .episode-info {
+                padding: 0.8rem;
+            }
+
+            .episode-title {
+                font-size: 0.9rem;
+            }
+
+            .episode-duration {
+                font-size: 0.75rem;
+            }
+
+            .footer {
+                margin-top: 2rem;
+                font-size: 0.85rem;
+                padding-top: 1rem;
+            }
+
+            /* Particle size optimization for mobile */
+            .particle-1 {
+                width: 250px;
+                height: 250px;
+            }
+
+            .particle-2 {
+                width: 200px;
+                height: 200px;
+            }
+
+            .particle-3 {
+                width: 220px;
+                height: 220px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0.8rem;
+            }
+
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .header span {
+                font-size: 0.9rem;
+            }
+
+            .season-sidebar {
+                padding: 0.8rem;
+            }
+
+            .season-btn {
+                padding: 0.6rem 0.7rem;
+                font-size: 0.85rem;
+            }
+
+            .episode-header h3 {
+                font-size: 1.1rem;
+            }
+
+            .episode-grid {
+                grid-template-columns: 1fr;
+                gap: 0.7rem;
+            }
+
+            .episode-card:hover {
+                transform: scale(1.01);
             }
         }
     </style>
@@ -403,7 +546,7 @@
         </div>
 
         <div class="footer">
-            ⚡ Fan-made streaming showcase · Data berdasarkan Ninjago Wiki
+            MADE BY FLED - NINJAGOKU
         </div>
     </div>
 
